@@ -31,7 +31,7 @@
     <a mat-mini-fab color="primary" [href]="chantier.location">
         <mat-icon>room</mat-icon>
         </a>
-  </mat-list-item>fw
+  </mat-list-item>
   <mat-list-item role="listitem">Phone: {{chantier.phone}}
     <a mat-mini-fab color="primary" [href]="chantier.phone">
         <mat-icon>local_phone</mat-icon>
@@ -41,35 +41,32 @@
 </mat-list>
 <mat-divider></mat-divider>
 <mat-accordion>
-  <mat-expansion-panel>
+  <mat-expansion-panel *ngFor="let task of chantier.tasks">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Personal data
+        {{task.name}}
       </mat-panel-title>
       <mat-panel-description>
-        Type your name and age
+        {{task.details}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-
+    <div *ngFor="let material of task.materials">
+      <pre>{{material | json}}</pre>
+        <!-- id: number;
+    name: string;
+    link: string;
+    image: String;
+    toDo: number;
+    done: number;
+    details: string; -->
+    </div>
     <mat-form-field>
-      <input matInput placeholder="First name">
+      <input matInput placeholder="First name" value="">
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Age">
     </mat-form-field>
-  </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Self aware panel
-      </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
   </mat-expansion-panel>
 </mat-accordion>
 

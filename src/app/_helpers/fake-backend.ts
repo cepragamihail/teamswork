@@ -17,15 +17,15 @@ const materials: Material[] = [
 ];
 
 const tasks: Task[] = [
-  { id: 1, name: 'Task_001', details: 'Task 001 details',  materials: materials[0]},
-  { id: 2, name: 'Task_002', details: 'Task 002 details',  materials: materials[1]},
-  { id: 3, name: 'Task_003', details: 'Task 003 details',  materials: materials[2]},
+  { id: 1, name: 'Task_001', details: 'Task 001 details',  materials: [ materials[0] ] },
+  { id: 2, name: 'Task_002', details: 'Task 002 details',  materials: [ materials[1], materials[0] ]},
+  { id: 3, name: 'Task_003', details: 'Task 003 details',  materials: [ materials[2], materials[1] ]},
 ];
 
 const chantiers: Chantier[] = [
-  { id: 1, name: 'Chantier_001', conductor: 'Conductor_001', address: 'Address_001', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 001 details', tasks: tasks[0] },
-  { id: 2, name: 'Chantier_002', conductor: 'Conductor_002', address: 'Address_002', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 002 details', tasks: tasks[1] },
-  { id: 3, name: 'Chantier_003', conductor: 'Conductor_003', address: 'Address_003', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 003 details', tasks: tasks[2] },
+  { id: 1, name: 'Chantier_001', conductor: 'Conductor_001', address: 'Address_001', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 001 details', tasks: tasks },
+  { id: 2, name: 'Chantier_002', conductor: 'Conductor_002', address: 'Address_002', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 002 details', tasks: tasks },
+  { id: 3, name: 'Chantier_003', conductor: 'Conductor_003', address: 'Address_003', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 003 details', tasks: tasks },
 ];
 
 @Injectable()
