@@ -4,6 +4,6 @@ export class Material {
     link: string;
     image: String;
     toDo: number;
-    did: number;
+    done: number;
     details: string;
 }

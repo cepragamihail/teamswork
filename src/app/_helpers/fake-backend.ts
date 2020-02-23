@@ -3,11 +3,29 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-import { User, Role } from '../_models';
+import { User, Role, Chantier, Task, Material } from '../_models';
 
 const users: User[] = [
     { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
     { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
+];
+
+const materials: Material[] = [
+  { id: 1, name: 'Material_001', link: 'Material_001_link', image: 'Material_001_image', toDo: 123, done: 0, details: 'Material 001 details' },
+  { id: 2, name: 'Material_002', link: 'Material_002_link', image: 'Material_002_image', toDo: 345, done: 12, details: 'Material 002 details' },
+  { id: 3, name: 'Material_003', link: 'Material_003_link', image: 'Material_003_image', toDo: 567, done: 432, details: 'Material 003 details' },
+];
+
+const tasks: Task[] = [
+  { id: 1, name: 'Task_001', details: 'Task 001 details',  materials: materials[0]},
+  { id: 2, name: 'Task_002', details: 'Task 002 details',  materials: materials[1]},
+  { id: 3, name: 'Task_003', details: 'Task 003 details',  materials: materials[2]},
+];
+
+const chantiers: Chantier[] = [
+  { id: 1, name: 'Chantier_001', conductor: 'Conductor_001', address: 'Address_001', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 001 details', tasks: tasks[0] },
+  { id: 2, name: 'Chantier_002', conductor: 'Conductor_002', address: 'Address_002', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 002 details', tasks: tasks[1] },
+  { id: 3, name: 'Chantier_003', conductor: 'Conductor_003', address: 'Address_003', location: 'https://www.google.com/maps/search/?api=1&query=50.866759,4.320649', phone: '+40-730-394-930', details: 'Chantier 003 details', tasks: tasks[2] },
 ];
 
 @Injectable()
@@ -30,6 +48,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getUsers();
                 case url.match(/\/users\/\d+$/) && method === 'GET':
                     return getUserById();
+                case url.match('/chantiers') && method === 'GET':
+                    return getChantiers();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -56,6 +76,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function getUsers() {
             if (!isAdmin()) return unauthorized();
             return ok(users);
+        }
+
+        function getChantiers() {
+          return ok(chantiers);
         }
 
         function getUserById() {
