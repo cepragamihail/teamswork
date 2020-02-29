@@ -11,9 +11,9 @@ const users: User[] = [
 ];
 
 const materials: Material[] = [
-  { id: 1, name: 'Material_001', link: 'Material_001_link', image: 'Material_001_image', toDo: 123, done: 0, details: 'Material 001 details' },
-  { id: 2, name: 'Material_002', link: 'Material_002_link', image: 'Material_002_image', toDo: 345, done: 12, details: 'Material 002 details' },
-  { id: 3, name: 'Material_003', link: 'Material_003_link', image: 'Material_003_image', toDo: 567, done: 432, details: 'Material 003 details' },
+  { id: 1, name: 'Material_name_001', link: 'https://en.wikipedia.org/wiki/Brick', image: 'https://previews.123rf.com/images/fotoall/fotoall1711/fotoall171100556/90812246-a-pile-of-bricks-background-building-materials.jpg', toDo: 123, done: 0, details: 'Material 001 details' },
+  { id: 2, name: 'Material_name_002', link: 'https://en.wikipedia.org/wiki/Brick', image: 'https://previews.123rf.com/images/fotoall/fotoall1711/fotoall171100556/90812246-a-pile-of-bricks-background-building-materials.jpg', toDo: 345, done: 12, details: 'Material 002 details' },
+  { id: 3, name: 'Material_name_003', link: 'https://en.wikipedia.org/wiki/Brick', image: 'https://previews.123rf.com/images/fotoall/fotoall1711/fotoall171100556/90812246-a-pile-of-bricks-background-building-materials.jpg', toDo: 567, done: 432, details: 'Material 003 details' },
 ];
 
 const tasks: Task[] = [

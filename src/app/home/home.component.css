@@ -1,6 +1,38 @@
 .mat-card {
   margin-top: 15px;
 }
-.mat-mini-fab {
+.chantier-contacts .mat-mini-fab {
   margin-left: auto;
+}
+.material-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding: 5px 5px;
+  border-bottom: 1px solid #ccc;
+  background-color: #bbb;
+  border-radius: 2px;
+}
+.material-name span {
+  font-weight: bold;
+}
+.material-inputs {
+  display: flex;
+  flex-direction: column;
+}
+.material-name .mat-mini-fab {
+  margin: 0 0 0 2%;
+}
+.material-details p {
+  padding: 10px 5px;
+  border-bottom: 1px solid #ddd;
+}
+.task-material {
+  margin-bottom: 5px;
+  border-radius: 2px;
+  background-color: #eee;
+}
+.chantier-task {
+  margin-left: -16px;
+  margin-right: -16px;
 }

@@ -15,18 +15,10 @@
 <mat-card class="example-card" *ngFor="let chantier of chantiers">
   <mat-card-header>
     <mat-card-title>{{chantier.name}}</mat-card-title>
-    <!-- <mat-card-subtitle>
-      <a mat-mini-fab color="primary" href="https://www.google.com/maps/search/?api=1&query=50.866759,4.320649" style="margin-right:20px">
-        <mat-icon>room</mat-icon>
-        </a>
-        <a mat-mini-fab color="primary" href="tel:+1-303-499-7111" style="margin-right:20px">
-        <mat-icon>local_phone</mat-icon>
-        </a>
-        </mat-card-subtitle> -->
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
-<mat-list role="list">
+<mat-list role="list" class="chantier-contacts">
   <mat-list-item role="listitem">Address: {{chantier.address}}
     <a mat-mini-fab color="primary" [href]="chantier.location">
         <mat-icon>room</mat-icon>
@@ -41,7 +33,7 @@
 </mat-list>
 <mat-divider></mat-divider>
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let task of chantier.tasks">
+  <mat-expansion-panel *ngFor="let task of chantier.tasks" class="chantier-task">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{task.name}}
@@ -50,23 +42,31 @@
         {{task.details}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div *ngFor="let material of task.materials">
-      <pre>{{material | json}}</pre>
-        <!-- id: number;
-    name: string;
-    link: string;
-    image: String;
-    toDo: number;
-    done: number;
-    details: string; -->
+    <div *ngFor="let material of task.materials" class="task-material">
+    <div class="material-name">
+      <h6>{{material.name}}:</h6>
+      <a mat-mini-fab color="primary" [href]="material.image">
+        <mat-icon>image</mat-icon>
+        </a>
+        <a mat-mini-fab color="primary" [href]="material.link">
+        <mat-icon>link</mat-icon>
+        </a>
     </div>
-    <mat-form-field>
-      <input matInput placeholder="First name" value="">
+    <div class="material-details">
+      <p>{{material.details}}</p>
+    </div>
+    <div class="material-inputs">
+      <mat-form-field>
+      <mat-label>To do</mat-label>
+      <input matInput placeholder="To Do" value="{{material.toDo}}">
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Done</mat-label>
+      <input matInput placeholder="Done" [value]="material.done">
+    </mat-form-field>
+    </div>
+    </div>
 
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>
 
